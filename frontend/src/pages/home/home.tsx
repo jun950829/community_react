@@ -5,6 +5,7 @@ import Header from '../../components/header';
 import { useDispatch, useSelector } from 'react-redux';
 import sample from '../../common/config/reducers/sample';
 import dataInterface from '../../common/config/reducers/sample';
+import { useEffect } from 'react';
 
 const btnStyle = css`
   width: 200px;
@@ -16,10 +17,14 @@ const btnStyle = css`
 
 export default function Home () {
   const dispatch = useDispatch();
+
+  const isLogin = useSelector((state) => {
+    state.sample;
+  })
   
-  const onDispatch = () => {
-    let result = dispatch({type: 'SAMPLE', text: 'test4'});
-    console.log('redux', result);
+  const onDispatch = async () => {
+    dispatch({type: 'SAMPLE', text: 'test4'});
+    console.log('redux', isLogin);
 
   }
 

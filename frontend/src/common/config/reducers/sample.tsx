@@ -35,7 +35,6 @@ async function findId(name : String) {
             isLogin = 'Login';
         } 
     });
-    console.log(isLogin);
 
     return isLogin;
 }
@@ -45,7 +44,9 @@ const sample = async (state = initialState, action : any) => {
     switch (action.type) {
         case SAMPLE : {
             const checkId = await findId(action.text);
-            return { ...state, ...{ isLogin : checkId} };
+            state.isLogin = checkId;
+            // console.log('sdfsfd', checkId);
+            return state;
         }
         default :
             return state;
